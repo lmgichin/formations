@@ -29,6 +29,12 @@ func main() {
 	fmt.Println(genEven())
 	fmt.Println(genEven())
 
+	tf := []uint { 1,2,3,4,5,6, 10}
+
+	for _, v := range tf {
+		fmt.Printf("Factorielle de %d = %d\n", v , mfac(uint(v)))
+	}
+
 }
 
 // ***
@@ -109,9 +115,22 @@ func makeEven() func() uint {
 
 	i := uint(0)
 
-	return func() (ret uint){
-		ret = i
+	return func() (mret uint){
+		mret = i
 		i += 2
 		return
 	}
+}
+
+// ***
+// Exemple de fonction récursive : factorielle
+// ***
+
+func mfac(x uint) uint{
+
+	if x == 0 {
+		return 1
+	}
+
+	return x * mfac ( x - 1)
 }
