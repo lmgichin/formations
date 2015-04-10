@@ -1,6 +1,4 @@
 # -*- coding: utf8 -*-
-__author__ = 'sbourdin'
-
 
 class Personne:
     "Définition de la classe personne"
