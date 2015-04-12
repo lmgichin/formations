@@ -17,6 +17,11 @@ class LmWith:
         pass
 
 
-with LmWith('Param init') as i:
-    raise TypeError('Mauvais type')
+try:
+
+    with LmWith('Param init') as i:
+        raise TypeError('Mauvais type')
+        pass
+
+except TypeError:
     pass
