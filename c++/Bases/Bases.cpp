@@ -9,6 +9,8 @@ extern int ext_val;
 void printPrime(int);
 void testString_c(void);
 void testString_cpp(void);
+void swap(int *x, int *y);
+int &ref(int idx, int tab[1]);
 
 namespace ns {
 	
@@ -86,5 +88,24 @@ void main(void) {
 	// test String
 	testString_c();
 	testString_cpp();
+
+	//swap
+	int x=2, y=3;
+	int &r = x;
+
+	swap(&x, &y);
+	cout << "Swapped 1 x = " << x << " y = " << y << endl;
+
+	swap(x, y);
+	cout << "Swapped 1 x = " << x << " y = " << y << endl;
+	r = 7;
+	cout << "Swapped 1 x = " << x << " y = " << y << endl;
+
+	// test retour ref
+	int tab[] = { 1, 2, 3, 4, 5, 6, 7 };
+	
+	int &rr = ref(2, tab);
+	rr = 8;
+	cout << "tab = " << tab[2] << endl;
 
 }

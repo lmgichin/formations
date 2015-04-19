@@ -74,3 +74,30 @@ void testString_cpp(void) {
 	len = str3.size();
 	cout << "str3.size() :  " << len << endl;
 }
+
+// inversion de paramètres avec passage par pointeur
+
+void swap(int *x, int *y) {
+
+	int t = *x;
+	*x = *y;
+	*y = t;
+
+}
+
+// inversion de paramètres avec passage par référence
+
+void swap(int &x, int &y) {
+
+	int t = x;
+	x = y;
+	y = t;
+
+}
+
+// retour d'une référence
+
+int &ref(int idx, int tab[]) {
+
+	return tab[idx];
+}
