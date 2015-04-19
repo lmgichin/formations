@@ -15,6 +15,8 @@ class Rectangle{
 public:
 	static int count;
 
+	Rectangle(){}
+
 	Rectangle(int lg, int la) : mLongueur(lg), mLargeur(la) {
 		std::cout << "Constructeur Rectangle " << mLongueur << " " << mLargeur << std::endl;
 		count++;
@@ -59,4 +61,31 @@ int Rectangle::Compare(Rectangle r2) {
 void GetValue(Rectangle r) {
 
 	std::cout << "Valeurs des attributs : " << r.mLargeur << " " << r.mLongueur << std::endl;
+}
+
+
+// *************************************************************************
+
+class Carre : public Rectangle {
+
+public:
+
+	Carre(int cote);
+	Carre() {}
+	Carre operator+ (const Carre&);
+
+
+};
+
+Carre::Carre(int cote) {
+
+	this->SetLargeur(cote);
+	this->SetLongueur(cote);
+}
+
+Carre Carre::operator+(const Carre &c2) {
+
+	Carre c(this->mLongueur + c2.mLongueur);
+
+	return c;
 }

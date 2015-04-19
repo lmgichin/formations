@@ -51,4 +51,14 @@ void main(void) {
 
 	cout << "Nombre de rectangles : " << Rectangle::count << endl;
 
+
+	// héritage
+
+	Carre c(5), c2(7), c3;
+
+	GetValue(c);
+	cout << "Aire de carre : " << c.Aire() << endl;
+
+	c3 = c + c2;
+	cout << "Aire de carre : " << c3.Aire() << endl;
 }
