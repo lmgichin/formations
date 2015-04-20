@@ -61,4 +61,18 @@ void main(void) {
 
 	c3 = c + c2;
 	cout << "Aire de carre : " << c3.Aire() << endl;
+
+	// Test fonctions virtuelles
+	A a;
+	B b;
+
+	a.F1();
+	a.F2();
+	b.F1();
+	b.F2();
+
+	A *pa = &b;
+	pa->F1();
+	pa->F2();
 }
+

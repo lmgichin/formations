@@ -89,3 +89,23 @@ Carre Carre::operator+(const Carre &c2) {
 
 	return c;
 }
+
+// *************************************************************************************
+// Classes de tests des fonctions virtuelles
+// *************************************************************************************
+
+class A {
+
+public:
+
+	void F1(void)  { std::cout << "A::F1" << std::endl; }
+	virtual void F2(void) { std::cout << "A::F2" << std::endl; }
+};
+
+class B : public A {
+
+public:
+
+	void F1(void)  { std::cout << "B::F1" << std::endl; }
+	void F2(void) { std::cout << "B::F2" << std::endl; }
+};
