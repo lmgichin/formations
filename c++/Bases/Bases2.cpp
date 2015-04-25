@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include <string>
 
 using namespace std;
@@ -73,6 +74,25 @@ void testString_cpp(void) {
 	// total lenghth of str3 after concatenation
 	len = str3.size();
 	cout << "str3.size() :  " << len << endl;
+}
+
+
+void testFile(void){
+
+	ofstream f;
+
+	f.open("c:\\TEMP\\data.txt", ios::trunc | ios::out);
+	f << "Chaine ecrite dans le fichier\nDeuxième Ligne" << endl;
+	f.close();
+
+	ifstream fl;
+	char data[255];
+	fl.open("c:\\TEMP\\data.txt");
+
+	while (fl.getline(data,255))
+		cout << data<< endl;
+	
+	fl.close();
 }
 
 // inversion de paramètres avec passage par pointeur

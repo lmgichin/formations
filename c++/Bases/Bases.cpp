@@ -10,7 +10,8 @@ void printPrime(int);
 void testString_c(void);
 void testString_cpp(void);
 void swap(int *x, int *y);
-int &ref(int idx, int tab[1]);
+void testFile(void);
+int &ref(int idx, int tab[]);
 
 namespace ns {
 	
@@ -107,5 +108,9 @@ void main(void) {
 	int &rr = ref(2, tab);
 	rr = 8;
 	cout << "tab = " << tab[2] << endl;
+
+	// test fichier
+
+	testFile();
 
 }
