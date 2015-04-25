@@ -3,16 +3,33 @@
 
 using namespace std;
 
+
+// ***************************************************************************************************
+// surcharge de l'opérateur << pour un Point
+// ***************************************************************************************************
+
+ostream &operator<< (ostream &flux, PointV1 pt) {
+
+	flux << "Valeurs du point : X = " << pt.mX << " Y = " << pt.mY;
+	return flux;
+
+}
+// *
+
 void main(void) {
 
 	// Test classe Point
+
 
 	PointV1 pt;
 
 	pt.mX = 5;
 	pt.mY = 6;
 
+	cout << "Val x = ";
+
 	cout << "Point (" << pt.mX << "," << pt.mY << ")" << endl;
+	cout << pt << endl;
 
 	// Test classe Rectangle
 
