@@ -18,4 +18,5 @@ def startAt(start):
 
 f = startAt(10)
 
+print f
 print f(2), f(5), f(8)
