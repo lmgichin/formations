@@ -4,6 +4,8 @@
 
 using namespace std;
 
+void test_STL(void);
+
 // ***********************************************************************************************
 // Définition d'une fonction template
 // ***********************************************************************************************
@@ -162,4 +164,7 @@ void main(void)
 		cerr << "Exception: " << ex.what() << endl;
 	
 	}
+
+	// *** test de la STL
+	test_STL();
 }

@@ -103,9 +103,9 @@ def getStats(dico):
 
 if __name__ == '__main__':
 
-    lstJoueurs = ['LMA', 'SBO']
+    lstJoueurs = ['LMA', 'SBO','JWU']
     dct = genFixedVal(lstJoueurs, nbDes=2)
     #dct = genVarVal('LMA','SBO', 'JWU', nbTirages=3, nbDes=3)
     print "Tirages = ", dct
     print "Doubles = ", getDoubles(dct)
-    print "Statts = ",getStats(dct)
+    print "Stats = ",getStats(dct)
