@@ -6,11 +6,15 @@ import subprocess
 import os
 import re
 
-#os.system("dir/w")
 
 host = 'free.fr'
-#subprocess.call(['ping', '-n', '2', host])
-pr = subprocess.Popen(['ping', '-n', '2', host], stdout=subprocess.PIPE)
+
+if os.name == 'posix':
+    pcount = '-c'
+else:
+    pcount = '-n'
+
+pr = subprocess.Popen(['ping', '-c', '2', host], stdout=subprocess.PIPE)
 
 output = pr.communicate()[0]
 
@@ -25,3 +29,4 @@ try:
 
 except AttributeError:
     print "La requête n'a rien retourné !"
+    print "Debug = ", output

@@ -46,6 +46,7 @@ class Rectangle(Point):
 
 # #############################################################################
 
+
 class Carre(Rectangle):
 
     """
@@ -53,7 +54,7 @@ class Carre(Rectangle):
     """
     def __init__(self, x, y, cote):
 
-        Rectangle.__init__(self, x,y,cote,cote)
+        Rectangle.__init__(self, x, y, cote, cote)
 
     def __str__(self):
         return "CARRE"

@@ -1,16 +1,48 @@
+# -*- coding: utf-8 -*-
 __author__ = 'lucio'
 
-import random
-
-def mongen(nb, max):
-
-    i = 0
-
-    while i < nb:
-
-        yield random.randrange(max)
-        i += 1
+# ######################################################################################################################
+# définition d'un itérateur
+# ######################################################################################################################
 
 
-for n in mongen(15,100):
-    print n
+class MyRange:
+
+    def __init__(self, low, high):
+        self.current = low
+        self.high = high
+
+    def __iter__(self):
+        return self
+
+    def next(self):
+
+        if self.current <= self.high:
+            self.current += 1
+            return self.current - 1
+        else:
+            raise StopIteration
+
+# ######################################################################################################################
+# définition d'un générateur
+# ######################################################################################################################
+
+
+def my_gen(current, high):
+
+    while current <= high:
+        yield current
+        current += 1
+
+
+# ######################################################################################################################
+# on teste...
+# ######################################################################################################################
+
+if __name__ == '__main__':
+
+    for i in MyRange(1,10):
+        print i
+
+    for j in my_gen(1,10):
+        print j

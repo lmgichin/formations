@@ -18,6 +18,7 @@ curs.execute("CREATE TABLE PERSONNE (PERS_ID INTEGER PRIMARY KEY, PERS_NOM VARCH
 print "insert data"
 curs.execute("INSERT INTO PERSONNE (PERS_NOM,PERS_PRENOM) VALUES (?,?)", ("MAIGNAN", "Luc"))
 curs.execute("INSERT INTO PERSONNE (PERS_NOM,PERS_PRENOM) VALUES (?,?)", ("BOURDIN", u"Stéphane"))
+print "get data..."
 
 for nom, prenom in curs.execute('Select PERS_NOM, PERS_PRENOM From PERSONNE'):
     print u"Nom : {}, Prenom : {}".format(nom, prenom)
