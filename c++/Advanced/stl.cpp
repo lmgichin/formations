@@ -49,9 +49,13 @@ void test_STL(void) {
 
 	// les maps
 	map<char, int> stats;
+	map<char, int>::iterator it;
 	string s = "Donnez du whisky à ce vieux juge qui fume";
 
 	for (unsigned int i = 0; i < s.size(); i++)
 		stats[s[i]]++;
+
+	for (it = stats.begin(); it != stats.end(); it++)
+		cout << "Valeur courante de map : " << it->first << " = " << it->second << endl;
 
 }
