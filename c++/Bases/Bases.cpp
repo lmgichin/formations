@@ -59,8 +59,23 @@ int sum(int a = 1, int b = 1) {
 	return a + b;
 }
 
+
 void main(void) {
 
+
+	// Test du mot clé const
+	const int cst = 4;		// l'affectation d'une nouvelle valeur à cst provoquera une erreur
+	int myint = 5;
+	const int * p = &myint;	// *p = 6 provoque une erreur car p pointe sur une constante
+							// mais le pointeur est modifiable
+
+	int * const p2 = &myint; // le pointeur est constant on ne peut donc le modifier mais on peut modifier son contenu
+	int const * const p3 = &myint; // pointeur constant sur une valeur constante
+	
+	
+
+
+	// ************************
 	fct();
 
 	cout << i << endl;
