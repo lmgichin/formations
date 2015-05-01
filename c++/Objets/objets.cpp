@@ -3,18 +3,23 @@
 
 using namespace std;
 
+void testPoly();
 
 // ***************************************************************************************************
 // surcharge de l'opérateur << pour un Point
 // ***************************************************************************************************
 
-ostream &operator<< (ostream &flux, PointV1 pt) {
+ostream &operator<< (ostream &flux, PointV1 const &pt ) {
 
 	flux << "Valeurs du point : X = " << pt.mX << " Y = " << pt.mY;
 	return flux;
 
 }
 // *
+
+void ModifParam(int * p) {
+	(*p)++;
+}
 
 void main(void) {
 
@@ -71,13 +76,13 @@ void main(void) {
 
 	// héritage
 
-	Carre c(5), c2(7), c3;
+	Carre c(5), c2(7), c3, c4(9);
 
 	GetValue(c);
 	cout << "Aire de carre : " << c.Aire() << endl;
 
-	c3 = c + c2;
-	cout << "Aire de carre : " << c3.Aire() << endl;
+	c3 = c + c2 + c4;
+	cout << "Aire de carre c3 : " << c3.Aire() << endl;
 
 	// Test fonctions virtuelles
 	A a;
@@ -91,5 +96,23 @@ void main(void) {
 	A *pa = &b;
 	pa->F1();
 	pa->F2();
+
+	// Test const
+	Cst cc;
+	cc.method1();
+	cout << "cc count = " << cc.get() << endl;
+
+	Cst * const pcc = &cc;
+	pcc->method1();
+	cout << "cc count = " << pcc->get() << endl;
+
+	const int k = 0;
+	ModifParam(const_cast<int*>(&k));
+	cout << " k = " << k << endl;
+
+	Abstraite *ab;
+
+	testPoly();
+
 }
 
