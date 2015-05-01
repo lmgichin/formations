@@ -14,7 +14,7 @@ if os.name == 'posix':
 else:
     pcount = '-n'
 
-pr = subprocess.Popen(['ping', '-c', '2', host], stdout=subprocess.PIPE)
+pr = subprocess.Popen(['ping', pcount, '2', host], stdout=subprocess.PIPE)
 
 output = pr.communicate()[0]
 
