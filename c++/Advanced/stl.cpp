@@ -3,8 +3,97 @@
 #include <stack>
 #include <map>
 #include <iostream>
+#include <string>
+#include <algorithm>
+#include <cstdlib>
+#include <ctime>
 
 using namespace std;
+
+// Foncteur de somme
+class Sommer
+{
+public:
+	Sommer():m_somme(0)
+	{}
+
+	void operator()(int n)
+	{
+		m_somme += n;
+	}
+
+	int resultat() const
+	{
+		return m_somme;
+	}
+
+private:
+	int m_somme;
+
+};
+
+// Foncteur affichage
+
+class Afficher
+{
+public:
+	void operator()(int a) const
+	{
+		cout << a << endl;
+	}
+};
+
+// Foncteur de test pair
+
+struct EstPair {
+
+public:
+	const bool operator()(int val){
+		return (val % 2 == 0 );
+	}
+};
+
+// Foncteur de génération incrémentale
+
+class Remplir{
+public:
+	Remplir(int i):m_valeur(i)
+	{}
+
+	int operator()()
+	{
+		++m_valeur;
+		return m_valeur;
+	}
+
+private:
+	int m_valeur;
+};
+
+// Foncteur de génération aléatoire
+
+class Generer
+{
+public:
+	int operator()() const
+	{
+		return rand() % 10;  //On renvoie un nombre entre 0 et 9
+	}
+};
+
+// Foncteur pour modifier l'ordre de tri d'une map 
+
+class MapCompareLength {
+
+public:
+	bool operator()(const string& a, const string& b)
+	{
+		return a.length() < b.length();
+	}
+};
+
+
+// *** Fonction de test de la STL
 
 void test_STL(void) {
 
@@ -57,5 +146,42 @@ void test_STL(void) {
 
 	for (it = stats.begin(); it != stats.end(); it++)
 		cout << "Valeur courante de map : " << it->first << " = " << it->second << endl;
+
+	// tri des maps
+	map<string, int> fruits;
+	map<string, int, MapCompareLength> fruits2;
+	map<string, int>::iterator iter;
+
+	fruits["pomme"] = 3;
+	fruits["raisin"] = 7;
+	fruits["kiwi"] = 2;
+	fruits["noix de coco"] = 1;
+	fruits2["pomme"] = 3;
+	fruits2["raisin"] = 7;
+	fruits2["kiwi"] = 2;
+	fruits2["noix de coco"] = 1;
+
+	for (iter = fruits.begin(); iter != fruits.end(); iter++)
+		cout << "Nombre de " << iter->first << " : " << iter->second << endl;
+
+	for (map<string, int>::iterator it = fruits2.begin(); it != fruits2.end(); it++)
+		cout << "Nombre de " << it->first << " : " << it->second << endl;
+
+	// test algorithm
+
+	vector<int> tab(100, 0);
+	Remplir f(0);
+
+	generate(tab.begin(), tab.end(), f);
+
+	srand((unsigned int)time((time_t *)0));
+
+	generate(tab.begin(), tab.end(), Generer());
+	cout << "Nombre de 0 dans le tableau : " << count(tab.begin(), tab.end(), 0) << endl;
+	cout << "Nombre de pairs dans le tableau : " << count_if(tab.begin(), tab.end(), EstPair()) << endl;
+	sort(tab.begin(), tab.end());
+	//for_each(tab.begin(), tab.end(), Afficher());
+	Sommer somme = for_each(tab.begin(), tab.end(), Sommer());
+	cout << "La somme des éléments générés est : " << somme.resultat()<< endl;
 
 }
