@@ -1,5 +1,4 @@
 # -*- coding: utf8 -*-
-__author__ = "Stéphane Bourdin"
 
 
 class Personne:
@@ -46,16 +45,15 @@ class Personne:
         return "Méthode privée"
 
     ### Méthode statique ###
+    @staticmethod
     def get_ctr():
         return Personne.ctr
 
-    get_ctr = staticmethod(get_ctr)
 
     ### Méthode de classe ##
+    @classmethod
     def get_ctr_classe(cls):
         return cls.ctr
-
-    get_ctr_classe = classmethod(get_ctr_classe)
 
     @classmethod
     def renvoie_methodes(cls):
@@ -97,4 +95,4 @@ print "Nombre de personnes : " + str(pers3.get_ctr())
 
 print "Liste des méthodes de la classe      : " + str(Personne.renvoie_methodes())
 print "Chaine de documentation de la classe : "
-#Personne.aide()
+Personne.aide()

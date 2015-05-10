@@ -1,6 +1,4 @@
 # -*- coding: utf8 -*-
-__author__ = 'sbourdin'
-
 
 class Personne:
     "Définition de la classe personne"
@@ -32,17 +30,28 @@ class Personne:
     def __str__(self):
         return self.prenom + " " + self.nom
 
-    ### Méthode statque ###
+    ### Méthode statique ###
     def get_ctr():
         return Personne.ctr
+
+    ### getter, setter ###
+    @property
+    def name(self):
+        return self.nom
+
+    @name.setter
+    def name(self, name):
+        self.nom = name
 
     get_ctr = staticmethod(get_ctr)
 
 
-pers = Personne("Maignan", "Luc")
+pers = Personne("xxx", "Gichin")
+pers.name = "Funakoshi"
+print "Nom = ", pers.name
 
 ### Lister toutes les attributs et méthodes de la classe ###
 print "Tous les objets : " + str(dir(pers))
 
-print "Toutes les méthodes : " +  str([methode for methode in dir(pers) if callable(getattr(pers, methode))])
+print "Toutes les méthodes : " + str([methode for methode in dir(pers) if callable(getattr(pers, methode))])
 

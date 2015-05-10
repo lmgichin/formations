@@ -13,11 +13,6 @@ class Personne:
 
 
 
-p1 = Personne('Maignan','Luc')
-p2 = Personne('Bourdin','Stéphane')
-p3 = Personne('Touil','Saïd')
-
-
 def save_pickle():
 
     l_p = [p1, p2, p3]
@@ -48,7 +43,16 @@ def read_json():
         with open('jsonTest', 'r') as f:
             j = json.load(f)
 
-        print j[0][0]
+        return j
 
-read_json()
 
+p1 = Personne('Hugo','Victor')
+p2 = Personne('Verlaine','Paul')
+p3 = Personne('Camus','Albert')
+
+
+save_pickle()
+print "Results from pickle : ", load_pickle()
+
+save_json()
+print "Results from json : ", read_json()

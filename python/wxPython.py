@@ -118,6 +118,6 @@ class fgsSizer(wx.Frame):
 # ###############################################################################################
 
 
-# testAffichageFrame()
+testAffichageFrame()
 # testEditor()
-testSizer()
+# testSizer()

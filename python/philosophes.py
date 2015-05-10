@@ -1,6 +1,9 @@
+# -*- coding: utf-8 -*-
+
 import threading
 import time
 import random
+
 
 class Philosophe(threading.Thread):
 
@@ -23,7 +26,7 @@ class Philosophe(threading.Thread):
         Philosophe.couverts.release()
 
     def reflechir(self):
-        print(self.nom + " réfléchit\n")
+        print(self.nom + " rÃ©flÃ©chit\n")
 
     def manger(self):
         time.sleep(0.5)
@@ -55,16 +58,16 @@ class Philosophe(threading.Thread):
 lsPhi=[]
 
 for i in range(7):
-    lsPhi += [ Philosophe("Philosophe n° {}".format(i))]
+    lsPhi += [ Philosophe("Philosophe nÂ° {}".format(i))]
 
 
 random.shuffle (lsPhi)
 
-for i in range(len(lsPhi)):
-    lsPhi[i].start()
+for philo in lsPhi:
+    philo.start()
 
-for i in range(len(lsPhi)):
-    lsPhi[i].join()
+for philo in lsPhi:
+    philo.join()
 
 print "Fini pour les philosophes!"
 
