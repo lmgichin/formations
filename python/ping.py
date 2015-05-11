@@ -24,7 +24,7 @@ try:
 
         perte = re.search(r"(\d*)% packet loss", output).groups()
         print "% de perte de paquets = " + perte[0]
-        temps = re.search(r"round-trip.* = (\d*\.\d*)/.*/(\d*\.\d*)/", output).groups()
+        temps = re.search(r"min/avg/max.* = (\d*\.\d*)/.*/(\d*\.\d*)/", output).groups()
         print "Temps minimal = {0[0]} ms, Temps maximal = {0[1]} ms".format(temps)
         ip = re.search(r"PING .* \((?P<ip>(\d*\.){3}\d*)", output).group('ip')
         print 'IP pingée = ' + ip
