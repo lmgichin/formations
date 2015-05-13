@@ -16,6 +16,19 @@ const T & Max(const T &A, const T &B)
 	return (A > B) ? A : B;
 }
 
+template <typename T>
+void QuiSuisJe(const T & x)
+{
+	std::cout << "Je ne sais pas" << std::endl;
+}
+
+// Spécialisation pour les int  
+template <>
+void QuiSuisJe<int>(const int & x)
+{
+	std::cout << "Je suis un int" << std::endl;
+}
+
 // ***********************************************************************************************
 // Définition d'une classe template
 // ***********************************************************************************************
@@ -60,6 +73,32 @@ T Stack<T>::top() const
 	// return copy of last element 
 	return elems.back();
 }
+
+// class template avec spécialisation
+
+template<typename T>
+struct Modele
+{
+	void QuiSuisJe()
+	{
+		std::cout << "Je suis un Modele<inconnu>" << std::endl;
+	}
+};
+
+template<>
+struct Modele<int>
+{
+	void QuiSuisJe()
+	{
+		std::cout << "Je suis un Modele<int>" << std::endl;
+	}
+
+	void CestQuoiCetteFonction()
+	{
+		// On peut tout à fait ajouter des fonctions 
+		// en fait le contenu de la classe peut être totalement différent !  
+	}
+};
 
 // ***********************************************************************************************
 // Génération d'exceptions
@@ -141,10 +180,21 @@ void main(void)
 
 	// * Test template Max
 
+	QuiSuisJe(3);
+	QuiSuisJe("xx");
 	cout << "Max (1,2) = " << Max<int>(1, 2) << endl;
 	cout << "Max ('abc','def') = " << Max<string>("abc", "def") << endl;
 
 	// * Test class template
+
+	Modele<float> M1;
+	Modele<int> M2;
+
+	M1.QuiSuisJe(); // "Je suis un Modele<inconnu>"  
+	M2.QuiSuisJe(); // "Je suis un Modele<int>"  
+
+	//M1.CestQuoiCetteFonction(); // Erreur : 'fonction inconnnue'  
+	M2.CestQuoiCetteFonction(); // OK
 
 	try {
 		Stack<int>    intStack;  // stack of ints 
