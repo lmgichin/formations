@@ -7,6 +7,12 @@ using namespace std;
 void test_STL(void);
 
 // ***********************************************************************************************
+// enum class
+// ***********************************************************************************************
+
+enum class Color : char {Red = 1, Blue = 2, Green = 3};
+
+// ***********************************************************************************************
 // Définition d'une fonction template
 // ***********************************************************************************************
 
@@ -149,6 +155,12 @@ void MyTerminate(void) {
 void main(void)
 
 {
+
+	// * Test class enum
+	Color color = Color::Red;
+
+	if (color == Color::Red)
+		cout << "Couleur rouge " << endl;
 
 	// * Test exception 1
 
