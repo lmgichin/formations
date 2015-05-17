@@ -1,10 +1,12 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <cstdint>
 
 using namespace std;
 
 void test_STL(void);
+void testElems(void);
 
 // ***********************************************************************************************
 // enum class
@@ -151,10 +153,14 @@ void MyTerminate(void) {
 }
 // ***********************************************************************************************
 
+void Challenge1(void);
 
 void main(void)
 
 {
+
+	//
+	Challenge1();
 
 	// * Test class enum
 	Color color = Color::Red;
@@ -229,4 +235,6 @@ void main(void)
 
 	// *** test de la STL
 	test_STL();
+
+	testElems();
 }
