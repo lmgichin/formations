@@ -17,6 +17,7 @@ create sequence formation.sq_emprunts;
 
 create table formation.users (
 		id integer default nextval('formation.sq_user') constraint pk_users primary key using index tablespace tb_indexes,
+	    surname varchar(20) not null check (surname <> ''),
 	    name varchar(50) not null check (name <> ''),
 		description text
 		)
@@ -51,4 +52,6 @@ create table formation.emprunts (
 
 -- population
 
-copy formation.author(surname,name) from '/tmp/author.data' with CSV delimiter ','
+copy formation.author(surname,name) from '/tmp/author.data' with CSV delimiter ',' quote '"';
+copy formation.books(title,author) from '/tmp/books.data' with CSV delimiter ',' quote '"';
+copy formation.users(surname,name) from '/tmp/users.data' with CSV delimiter ',' quote '"';
