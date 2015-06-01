@@ -44,7 +44,7 @@ create table formation.books (
 
 create table formation.emprunts (
 		id integer default nextval('formation.sq_emprunts') constraint pk_emprunts primary key using index tablespace tb_indexes,
-		sortie timestamp,
+		sortie timestamp not null,
 	    retour timestamp,
 		emprunteur integer constraint fk_user references formation.users(id),
         book integer constraint fk_book references formation.books(id),
@@ -52,8 +52,11 @@ create table formation.emprunts (
 		)
 		tablespace tb_data;
 
- create or replace rule rl_emprunt_available as on insert to formation.emprunts
+ create or replace rule rl_emprunt_unavailable as on insert to formation.emprunts
 		do also update formation.books set available = false where id = new.book ;
+
+ create or replace rule rl_emprunt_available as on update to formation.emprunts where new.retour is not null
+		do also update formation.books set available = true where id = old.book ;
 
 -- population
 
