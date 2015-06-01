@@ -50,6 +50,9 @@ create table formation.emprunts (
 		)
 		tablespace tb_data;
 
+--create or replace rule rl_emprunt_available as on insert to formation.emprunts
+--		do also update formation.books set available = false where 
+
 -- population
 
 copy formation.author(surname,name) from '/tmp/author.data' with CSV delimiter ',' quote '"';
