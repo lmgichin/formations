@@ -2,6 +2,8 @@
 
 __author__ = 'lucio'
 
+import functools
+
 # ######################################################################################################################
 # sample de tests des fonctions décorées en python
 # ######################################################################################################################
@@ -130,7 +132,7 @@ def func_time(func):
 
         t = time.clock()
         res = func(*args, **kwargs)
-        print "Exécution de {} : {}".format(func.__name__, time.clock()-t)
+        print u"Exécution de {} : {}".format(func.__name__, time.clock()-t)
 
         return res
 
@@ -150,6 +152,41 @@ def f():
 
 
 # ######################################################################################################################
+# décorateur qui "cache" dans un dictionnaire la valeur de retour d'une fonction
+# ######################################################################################################################
+
+def cached(fn):
+
+    fn.cache_dict = {}
+    @functools.wraps(fn)
+    def wrapper(*args, **kwargs):
+
+        argskey = (tuple(args), tuple(kwargs.items()))
+
+        if argskey in fn.cache_dict:
+            ret = fn.cache_dict[argskey]
+            print "-- Returning cached result : ", ret
+        else:
+            ret = fn.cache_dict[argskey] = fn(*args, **kwargs)
+
+        return ret
+
+    return wrapper
+
+# ######################################################################################################################
+# test de d'une fonction cachée
+# ######################################################################################################################
+
+@func_time
+@cached
+def fct_to_cache(j):
+
+    import time
+
+    time.sleep(4)
+    return j
+
+# ######################################################################################################################
 # le main...
 # ######################################################################################################################
 
@@ -167,3 +204,7 @@ if __name__ == '__main__':
     print "Fonction fcount appelée {} fois, et fcount2 {} fois".format(fcount.count, fcount2.count)
     print_nom('Funakoshi','Gichin')
     print_nom_param('Funakoshi','Gichin')
+
+    print fct_to_cache(1)
+    print fct_to_cache(2)
+    print fct_to_cache(2)

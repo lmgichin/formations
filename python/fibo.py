@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import timeit
+import deco
 # ###########################################################################################################
 
 
@@ -27,8 +28,16 @@ def affiche():
     for j,i in enumerate(xrange(25)):
         print 'rang {} = {}'.format(j+1,fibo(i))
 
+@deco.func_time
+@deco.cached
+def get_fibo(n):
+	import time
+	time.sleep(4)
+	return fibo(n)
 
 mtime = timeit.timeit(stmt="affiche()",setup="from __main__ import affiche",number=1)
 
-print "Temps d'exécution = ", mtime
+print u"Temps d'exécution = ", mtime
 
+print get_fibo(10000)
+print get_fibo(10000)

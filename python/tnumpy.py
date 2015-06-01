@@ -4,6 +4,7 @@ __author__ = 'Luc Maignan'
 
 import time
 import numpy as np
+import matplotlib.pyplot as plot
 
 
 def trad_version():
@@ -46,16 +47,21 @@ def array_numpy():
 
 def resolve_equation(coeff, values):
 
-
-
     return 0, 0, 0
+
+
+def draw_sin_function():
+
+    data = np.linspace(-10,10,200)
+    plot.plot(data, np.sin(data))
+    plot.show()
 
 # ####################################################################################################
 
 if __name__ == '__main__':
 
-    print "Temps d'exécution de la version traditionnelle : ", trad_version()
-    print "Temps d'exécution de la version numpy : ", numpy_version()
+    print u"Temps d'exécution de la version traditionnelle : ", trad_version()
+    print u"Temps d'exécution de la version numpy : ", numpy_version()
     array_numpy()
 
     # resoudre
@@ -63,4 +69,6 @@ if __name__ == '__main__':
     #     x + 2y + 3z = 0
     #     x + 3y + 4z = -2
 
-    print "Résultat = ", resolve_equation(np.matrix('1,1,1;,1,2,3;,1,3,4'), np.matrix('3,0,-2'))
+    # print "Résultat = ", resolve_equation(np.matrix('1,1,1;,1,2,3;,1,3,4'), np.matrix('3,0,-2'))
+
+    draw_sin_function()
