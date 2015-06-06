@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monroot>
+	<attr>Multicorn</attr>
+	<unattribut>
+		<person>
+			<surname>Prenom 1</surname>
+			<name>Nom 1</name>
+		</person>
+		<person>
+			<surname>Prenom 2</surname>
+			<name>Nom 2</name>
+		</person>
+	</unattribut>
+</monroot>
