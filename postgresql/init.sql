@@ -52,10 +52,16 @@ create table formation.emprunts (
 		)
 		tablespace tb_data;
 
- create or replace rule rl_emprunt_unavailable as on insert to formation.emprunts
+-- création des indexes spécifiques
+
+create index idx_usr_desc on formation.users using gin(to_tsvector('french', description));
+
+-- création des règles
+
+create or replace rule rl_emprunt_unavailable as on insert to formation.emprunts
 		do also update formation.books set available = false where id = new.book ;
 
- create or replace rule rl_emprunt_available as on update to formation.emprunts where new.retour is not null
+create or replace rule rl_emprunt_available as on update to formation.emprunts where new.retour is not null
 		do also update formation.books set available = true where id = old.book ;
 
 -- population
@@ -63,3 +69,6 @@ create table formation.emprunts (
 copy formation.author(surname,name) from '/tmp/author.data' with CSV delimiter ',' quote '"';
 copy formation.books(title,author) from '/tmp/books.data' with CSV delimiter ',' quote '"';
 copy formation.users(surname,name) from '/tmp/users.data' with CSV delimiter ',' quote '"';
+
+update formation.users set description = 'description d''un utilisateur pour une recherche FTS';
+-- requête = select * from users where to_tsvector(description) @@ to_tsquery('utilisateur');
