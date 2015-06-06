@@ -70,5 +70,7 @@ copy formation.author(surname,name) from '/tmp/author.data' with CSV delimiter '
 copy formation.books(title,author) from '/tmp/books.data' with CSV delimiter ',' quote '"';
 copy formation.users(surname,name) from '/tmp/users.data' with CSV delimiter ',' quote '"';
 
-update formation.users set description = 'description d''un utilisateur pour une recherche FTS';
+update formation.users set description = 'description de l''utilisateur Luc pour une recherche FTS' where id = 1;
+update formation.users set description = 'description de l''utilisateur Stéphane pour une recherche FTS' where id = 2;
 -- requête = select * from users where to_tsvector(description) @@ to_tsquery('utilisateur');
+--   avec un rank : select surname,name,ts_rank_cd(vector, query) from users, to_tsquery('(Luc|St:*) & util:*') query, to_tsvector(description) vector where vector @@ query;
