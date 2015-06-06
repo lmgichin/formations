@@ -15,3 +15,8 @@ create tablespace tb_indexes location '/data/indexes';
 
 create database db_formation WITH ENCODING = 'UTF-8' TEMPLATE = template0;
 
+-- creation des roles
+
+drop role if exists dba, udba;
+create role dba with createdb nologin replication createrole;
+create role udba with login encrypted password 'DBA' in role dba;
