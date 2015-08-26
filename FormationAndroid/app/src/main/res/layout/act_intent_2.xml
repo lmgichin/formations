@@ -16,4 +16,11 @@
         android:layout_height="wrap_content"
         android:hint="@string/login"
         android:id="@+id/userPassword"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Retour ..."
+        android:id="@+id/retour"
+        android:layout_gravity="center_horizontal" />
 </LinearLayout>
