@@ -9,4 +9,9 @@
     <string name="wat_nbChar">Il reste 20 caractères</string>
     <string name="wat_sendMessage">Envoyer</string>
     <string name="wat_msg">Entrez votre texte içi...</string>
+    <string name="addNotification">Notification</string>
+    <string name="notification_launching_title">Titre de la Notification (launching)</string>
+    <string name="notification_title">Titre de la Notification</string>
+    <string name="notification_desc">Description de la Notification</string>
+    <string name="share">Partager</string>
 </resources>
