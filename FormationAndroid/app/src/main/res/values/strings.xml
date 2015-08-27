@@ -6,4 +6,7 @@
     <string name="login">Username</string>
     <string name="pass">Password</string>
     <string name="connect">Connect</string>
+    <string name="wat_nbChar">Il reste 20 caractères</string>
+    <string name="wat_sendMessage">Envoyer</string>
+    <string name="wat_msg">Entrez votre texte içi...</string>
 </resources>
