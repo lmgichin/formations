@@ -7,7 +7,7 @@ import android.widget.EditText;
 /**
  * Created by Luc Maignan on 25/08/2015.
  */
-public class TestIntentActivityTest extends ActivityInstrumentationTestCase2 {
+public class TestIntentActivityTest extends ActivityInstrumentationTestCase2<TestIntentActivity> {
 
     private Activity myActivity;
     private EditText login;
@@ -22,7 +22,7 @@ public class TestIntentActivityTest extends ActivityInstrumentationTestCase2 {
         super.setUp();
         myActivity = this.getActivity();
         login = (EditText) myActivity.findViewById(R.id.login);
-        login.setText(myActivity.getResources().getString(R.string.login));
+        //login.setText(myActivity.getResources().getString(R.string.login));
 
     }
 
@@ -33,6 +33,6 @@ public class TestIntentActivityTest extends ActivityInstrumentationTestCase2 {
 
     public void testLogin() {
 
-        assertEquals(login.getText(),myActivity.getResources().getString(R.string.login) );
+        assertEquals(login.getText().toString(),myActivity.getResources().getString(R.string.login) );
     }
 }

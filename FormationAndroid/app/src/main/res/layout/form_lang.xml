@@ -3,7 +3,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+ >
 
     <TextView
         android:id="@+id/textSexe"
@@ -16,7 +17,7 @@
         android:id="@+id/listSexe"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:choiceMode="singleChoice" >
+        android:choiceMode="singleChoice">
     </ListView>
 
     <TextView
@@ -29,7 +30,8 @@
         android:id="@+id/listProg"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:choiceMode="multipleChoice" >
+        android:choiceMode="multipleChoice"
+        android:layout_weight="1">
     </ListView>
 
     <Button
