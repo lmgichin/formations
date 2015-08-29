@@ -14,4 +14,6 @@
     <string name="notification_title">Titre de la Notification</string>
     <string name="notification_desc">Description de la Notification</string>
     <string name="share">Partager</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="welcome">Bienvenue</string>
 </resources>
