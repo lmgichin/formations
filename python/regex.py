@@ -8,10 +8,10 @@ chaine = ""
 
 expression = r"^0[0-9]([ .-]?[0-9]{2}){4}$"
 
-#while re.search(expression, chaine) is None:
+"""while re.search(expression, chaine) is None:
 
-#    chaine = raw_input("Saisissez un numéro de téléphone (valide) :")
-
+    chaine = raw_input("Saisissez un numéro de téléphone (valide) :")
+"""
 
 print "Chaîne remplacée : ", re.sub(r"(.*) (.*)",r"\2 \1","Nom Prénom")
 
@@ -27,7 +27,7 @@ if matchObj:
 else:
    print "No match!!"
 
-searchObj = re.search( r'(.*) are (.*?) .*', line, re.M|re.I)
+searchObj = re.search( r'(.*) are (.*) t', line)
 
 if searchObj:
    print "searchObj.group() : ", searchObj.group()

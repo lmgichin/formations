@@ -11,12 +11,12 @@ def liste(directory):
         print "Répertoire : " + racine
 
         for rep in repertoire :
-            print '---' + os.path.join(directory,rep)
+            print 'Dirs : ---' + os.path.join(directory,rep)
 
         print "Fichiers de " + racine
 
         for fic in fichiers :
-            print '---' + fic
+            print 'Files : ---' + fic
 
 # ########################################################################################################
 

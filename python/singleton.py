@@ -1,5 +1,5 @@
 # -*- coding: utf8 -*-
-__author__ = 'sbourdin'
+__author__ = 'lmaignan'
 
 
 class Singleton(object) :
@@ -8,7 +8,7 @@ class Singleton(object) :
 
     def __new__(cls):
         if Singleton.instance is None :
-            Singleton.instance = object.__new__(self)
+            Singleton.instance = object.__new__(cls)
         return Singleton.instance
 
 
@@ -19,5 +19,7 @@ s1 = Singleton()
 s2 = Singleton()
 
 # On vérifie que les deux objets sont bien identiques
+print s1
+print s2
 assert s1 is s2
 

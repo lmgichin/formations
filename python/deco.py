@@ -158,7 +158,7 @@ def f():
 def cached(fn):
 
     fn.cache_dict = {}
-    @functools.wraps(fn)
+    #@functools.wraps(fn)
     def wrapper(*args, **kwargs):
 
         argskey = (tuple(args), tuple(kwargs.items()))
