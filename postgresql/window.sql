@@ -14,6 +14,6 @@ insert into employes values ('Lydia', 'accueil', 29500);
 insert into employes values ('Oscar', 'commercial', 59900);
 
 -- requêtes fenêtrées
---    select nom, dep, salaire, avg(salaire) OVER (PARTITION by dep ) from employes;
---    select nom, dep, salaire, rank() OVER (PARTITION by dep order by salaire desc ) from employes;
+    select nom, dep, salaire, avg(salaire) OVER (PARTITION by dep ) from employes;
 --    
+    select nom, dep, salaire, rank() OVER (PARTITION by dep order by salaire desc ) from employes;

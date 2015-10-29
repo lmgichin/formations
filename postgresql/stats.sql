@@ -1,7 +1,14 @@
-select query, (state_change - query_start) as duration from pg_catalog.pg_stat_activity;
-select datname, xact_commit, xact_rollback from pg_stat_database order by datname;
+select query, (state_change - query_start) as duration 
+from pg_catalog.pg_stat_activity;
 
-select schemaname, relname, seq_scan, idx_scan, n_tup_ins, n_tup_upd, n_tup_del, last_vacuum, last_autovacuum, vacuum_count from pg_stat_all_tables where schemaname = 'formation' order by relname;
+select datname, xact_commit, xact_rollback 
+from pg_stat_database 
+order by datname;
+
+select schemaname, relname, seq_scan, idx_scan, n_tup_ins, n_tup_upd, n_tup_del, last_vacuum, last_autovacuum, vacuum_count 
+from pg_stat_all_tables 
+where schemaname = 'formation' 
+order by relname;
 
 --top 10 des tables les plus lues
 SELECT relname, idx_tup_fetch + seq_tup_read AS Total

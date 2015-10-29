@@ -45,9 +45,9 @@ create table formation.books (
 create table formation.emprunts (
 		id integer default nextval('formation.sq_emprunts') constraint pk_emprunts primary key using index tablespace tb_indexes,
 		sortie timestamp not null,
-	    retour timestamp,
+	    	retour timestamp,
 		emprunteur integer constraint fk_user references formation.users(id),
-        book integer constraint fk_book references formation.books(id),
+        	book integer constraint fk_book references formation.books(id)
 		remarques text
 		)
 		tablespace tb_data;
