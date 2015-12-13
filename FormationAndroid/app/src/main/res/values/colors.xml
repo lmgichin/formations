@@ -3,4 +3,6 @@
     <color name="background">#99CCFF</color>
     <color name="black">#000000</color>
     <color name="translucide">#00000000</color>
+    <color name="rouge">#FF0000</color>
+    <color name="vert">#04B404</color>
 </resources>
