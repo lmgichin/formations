@@ -21,6 +21,9 @@ public class TicTacToeActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tictactoe);
         setupOnClickListeners();
+
+        //TextView T = (TextView) findViewById(R.id.textView);
+        //T.setText(getResources().getString(R.string.titre_ttt));
     }
 
     private void setupOnClickListeners() {

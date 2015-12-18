@@ -7,10 +7,9 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Un jeu pour ma Cassie..."
+        android:text="Un jeu de TicTacToe..."
         android:id="@+id/textView"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
         android:layout_marginStart="108dp"
         android:gravity="center_vertical|center_horizontal" />
 

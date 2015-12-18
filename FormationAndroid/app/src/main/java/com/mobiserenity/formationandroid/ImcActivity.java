@@ -98,7 +98,9 @@ public class ImcActivity extends Activity {
 
                 // Puis on vérifie que la taille est cohérente
                 if(tValue == 0)
-                    Toast.makeText(ImcActivity.this, "Hého, tu es un Minipouce ou quoi ?", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ImcActivity.this,
+                            "Hého, tu es un Minipouce ou quoi ?",
+                            Toast.LENGTH_SHORT).show();
                 else {
                     float pValue = Float.valueOf(p);
                     // Si l'utilisateur a indiqué que la taille était en centimètres

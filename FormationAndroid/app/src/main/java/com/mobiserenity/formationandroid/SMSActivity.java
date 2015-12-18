@@ -34,8 +34,8 @@ public class SMSActivity extends Activity {
                         Uri.parse("sms:" +  no.getText().toString()));
                 sendSms.putExtra("sms_body", msg.getText().toString() );
 
-                startActivity(sendSms); ***/
-
+                startActivity(sendSms);
+                */
                 SmsManager smsManager = SmsManager.getDefault();
 
                 smsManager.sendTextMessage(no.getText().toString(), null, msg.getText().toString(), null, null);

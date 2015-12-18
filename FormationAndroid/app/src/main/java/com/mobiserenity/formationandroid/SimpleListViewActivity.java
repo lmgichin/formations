@@ -6,16 +6,21 @@ package com.mobiserenity.formationandroid;
 
 import java.util.ArrayList;
         import java.util.HashMap;
-        import java.util.List;
+import java.util.Iterator;
+import java.util.List;
         import android.app.Activity;
         import android.os.Bundle;
-        import android.widget.ListAdapter;
+import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListAdapter;
         import android.widget.ListView;
         import android.widget.SimpleAdapter;
 
-public class SimpleListViewActivity extends Activity {
+public class SimpleListViewActivity extends Activity implements AdapterView.OnItemClickListener{
 
     ListView vue;
+    List<HashMap<String, String>> liste;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -44,7 +49,7 @@ public class SimpleListViewActivity extends Activity {
      * Dans notre cas, la valeur sera une chaîne de caractères, puisque le nom et le numéro de téléphone
      * sont entreposés dans des chaînes de caractères
     */
-        List<HashMap<String, String>> liste = new ArrayList<HashMap<String, String>>();
+        liste = new ArrayList<HashMap<String, String>>();
 
         HashMap<String, String> element;
         //Pour chaque personne dans notre répertoire…
@@ -64,7 +69,7 @@ public class SimpleListViewActivity extends Activity {
             liste.add(element);
         }
 
-        ListAdapter adapter = new SimpleAdapter(this,
+        SimpleAdapter adapter = new SimpleAdapter(this,
                 //Valeurs à insérer
                 liste,
       /*
@@ -75,8 +80,8 @@ public class SimpleListViewActivity extends Activity {
                 android.R.layout.simple_list_item_2,
       /*
        * Les clés des informations à afficher pour chaque élément :
-       *  - la valeur associée à la clé « text1 » sera la première information
-       *  - la valeur associée à la clé « text2 » sera la seconde information
+       *  - la valeur associée à la clé « person » sera la première information
+       *  - la valeur associée à la clé « no » sera la seconde information
       */
                 new String[] {"person", "no"},
       /*
@@ -88,6 +93,11 @@ public class SimpleListViewActivity extends Activity {
                 new int[] {android.R.id.text1, android.R.id.text2 });
         //Pour finir, on donne à la ListView le SimpleAdapter
         vue.setAdapter(adapter);
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
     }
 }
 

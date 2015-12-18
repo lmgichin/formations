@@ -52,6 +52,7 @@ public class TextWatcherActivity extends Activity implements TextWatcher {
                             + " caractères en trop");
             send.setEnabled(false);
         }
+
     }
 
     @Override

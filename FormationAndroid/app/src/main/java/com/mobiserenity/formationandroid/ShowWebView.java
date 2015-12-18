@@ -18,7 +18,7 @@ public class ShowWebView extends Activity {
 		//Get webview 
 		webView = (WebView) findViewById(R.id.webView1);
 		
-		startWebView("http://www.androidexample.com/media/webview/login.html");
+		startWebView("http://www.google.fr");
 		
 	}
 	

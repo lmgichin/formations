@@ -5,6 +5,8 @@ package com.mobiserenity.formationandroid;
  */
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
+import android.util.SparseBooleanArray;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -55,6 +57,13 @@ public class FormulaireLangageActivity extends Activity {
 
             @Override
             public void onClick(View v) {
+
+                SparseBooleanArray lchk = mListProg.getCheckedItemPositions();
+
+                for (int i=0; i < lchk.size(); i++)
+                    Toast.makeText(FormulaireLangageActivity.this, mLangages[lchk.keyAt(i)], Toast.LENGTH_SHORT).show();
+
+
                 Toast.makeText(FormulaireLangageActivity.this, "Merci ! Les données ont été envoyées !", Toast.LENGTH_LONG).show();
 
                 //On déclare qu'on ne peut plus sélectionner d'élément
