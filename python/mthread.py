@@ -33,15 +33,12 @@ print 'fin'
 
 
 class MyThread(threading.Thread):
-
-    def __init__(self,nom):
-        threading.Thread.__init__(self,name=nom)
-
-
     def run(self):
         print "{} started !".format(self.getName())
         time.sleep(1)
         print "{} finished !".format(self.getName())
+
+
 
 lt=[]
 for x in range(4):
@@ -51,6 +48,7 @@ for x in range(4):
 
 for x in lt:
     x.start()
+
 
 
 for x in lt:

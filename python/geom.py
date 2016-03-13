@@ -18,7 +18,7 @@ class Point:
         """
         >>> p = Point(0,0)
         >>> print p.aire()
-        None
+        x
         """
         return None
 
@@ -53,6 +53,8 @@ class Rectangle(Point):
 
         return self.aire() < other.aire()
 
+
+
 # #############################################################################
 
 
@@ -72,6 +74,13 @@ class Carre(Rectangle):
     def __add__(self, other):
         return Carre(self.x, self.y, self.cote + other.cote)
 
+    def ta(self):
+        """
+        >>> c = Carre(4)
+        >>> print c.aire()
+        16
+        """
+        return None
 
 
 # ##############################################################################
@@ -103,6 +112,8 @@ l = [p,r,c]
 
 for obj in l:
     print 'Aire ({}) = {}'.format( obj, obj.aire())
+
+
 
 
 

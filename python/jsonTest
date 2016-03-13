@@ -1,0 +1,16 @@
+[
+   [
+      {
+         "nom": "Hugo", 
+         "prenom": "Victor"
+      }, 
+      {
+         "nom": "Verlaine", 
+         "prenom": "Paul"
+      }, 
+      {
+         "nom": "Camus", 
+         "prenom": "Albert"
+      }
+   ]
+]

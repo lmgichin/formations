@@ -5,9 +5,12 @@ __author__ = 'Luc Maignan'
 import subprocess
 import os
 import re
+import sys
 
-
-host = 'free.fr'
+if len(sys.argv) == 2:
+    host = sys.argv[1]
+else:
+    host = 'localhost'
 
 if os.name == 'posix':
     pcount = '-c'

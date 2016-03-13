@@ -22,22 +22,27 @@ class AbstractOld(object):
 
 import abc
 
+get_gen = lambda cls,attr: cls.__dict__[attr]
 
 class AbstractNew(object):
-    __metaclass__ =  abc.ABCMeta
+    __metaclass__ = abc.ABCMeta
+
+    def __init__(self):
+        print "AN -> init"
+        self.val = 'hello'
 
     @abc.abstractmethod
     def method1(self):
-        pass
+        print "AN -> method1"
 
 
 class Abs2(AbstractNew):
 
-    def __init__(self):
-        pass
+    def method1(self,x):
 
-    def method1(self):
-        pass
+        AbstractNew.method1(self)
+        print "ABS2 -> method1"
+        print get_gen(self,'val')
 
 
 # ######################################################################################################
@@ -70,6 +75,8 @@ if __name__ == '__main__':
         print "Erreur : impossible d'instancier une classe abstraite"
     finally:
         ao2 = Abs2()
+        ao2.method1(3)
+        help(ao2)
         print "On peut sous-classer la classe abstraite...\n\tsi on implémente la méthode abstraite"
 
     print "*** Création dynamique de la classe Personne"

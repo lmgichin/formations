@@ -24,9 +24,9 @@ def save_pickle():
 def load_pickle():
 
     with open('pickleTest','rb') as f:
-        l_p = pickle.load(f)
+        ld = pickle.load(f)
 
-    return l_p
+    return ld
 
 
 def save_json():
