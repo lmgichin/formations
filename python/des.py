@@ -63,7 +63,7 @@ def getDoubles(dico):
 
             val0 = tirage[0]
 
-            for indice,valeur in enumerate(tirage):
+            for valeur in tirage:
 
                 if valeur != val0:
                     break
@@ -89,8 +89,8 @@ def getStats(dico):
 
         for tirage in dico[joueur]:
 
-            for tir in enumerate(tirage):
-                dVal[tir[1]] = dVal.get(tir[1],0) + 1
+            for tir in tirage:
+                dVal[tir] = dVal.get(tir,0) + 1
 
         dicoRes[joueur] = dVal
 
