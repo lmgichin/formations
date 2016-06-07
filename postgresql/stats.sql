@@ -1,6 +1,12 @@
 select query, (state_change - query_start) as duration 
 from pg_catalog.pg_stat_activity;
 
+-- kill des sessions d'un user
+select pg_terminate_backend(pid) from pg_stat_activity where usename = 'username';
+
+-- liste des sessions d'un user
+select usename, pid from pg_stat_activity where usename = 'username';
+
 select datname, xact_commit, xact_rollback 
 from pg_stat_database 
 order by datname;
@@ -9,6 +15,41 @@ select schemaname, relname, seq_scan, idx_scan, n_tup_ins, n_tup_upd, n_tup_del,
 from pg_stat_all_tables 
 where schemaname = 'formation' 
 order by relname;
+
+-- liste des locks
+
+SELECT   bl.pid                 AS blocked_pid,
+         a.usename              AS blocked_user,
+         ka.query               AS current_or_recent_statement_in_blocking_process,
+         ka.state               AS state_of_blocking_process,
+         now() - ka.query_start AS blocking_duration,
+         kl.pid                 AS blocking_pid,
+         ka.usename             AS blocking_user,
+         a.query                AS blocked_statement,
+         now() - a.query_start  AS blocked_duration
+  FROM  pg_catalog.pg_locks         bl
+   JOIN pg_catalog.pg_stat_activity a  ON a.pid = bl.pid
+   JOIN pg_catalog.pg_locks         kl ON kl.transactionid = bl.transactionid AND kl.pid != bl.pid
+   JOIN pg_catalog.pg_stat_activity ka ON ka.pid = kl.pid
+  WHERE NOT bl.GRANTED;
+
+-- liste des tables n'ayant pas de PK
+SELECT
+    n.nspname AS "Schema",
+    c.relname AS "Table Name",
+    c.relhaspkey AS "Has PK"
+FROM
+    pg_catalog.pg_class c
+JOIN
+    pg_namespace n
+ON (
+        c.relnamespace = n.oid
+    AND n.nspname IN ('public')
+    AND c.relkind='r' AND c.relhaspkey = 'f'
+)
+ORDER BY c.relhaspkey, c.relname
+;
+
 
 --top 10 des tables les plus lues
 SELECT relname, idx_tup_fetch + seq_tup_read AS Total
